@@ -1,0 +1,9 @@
+{
+  "name": "geocoding-skill",
+  "description": "GIS skill for geocoding-skill",
+  "version": "0.1.0",
+  "author": "ruiduobao",
+  "skills": [
+    "geocoding-skill"
+  ]
+}
