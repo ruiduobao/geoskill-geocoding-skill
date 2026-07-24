@@ -1,15 +1,12 @@
 ---
-name: geocoding-skill
-display_name: 地理编码工具
-version: 0.1.0
-author: ruiduobao
-license: MIT-0
-description: |
-  Forward and reverse geocoding using Nominatim (OpenStreetMap) and Open-Meteo
+description: 'Forward and reverse geocoding using Nominatim (OpenStreetMap) and Open-Meteo
+
   Geocoding API. Supports address-to-coordinates, coordinates-to-address,
+
   and batch geocoding from CSV files.
-runtime: python>=3.8
-tags: [gis, geocoding, nominatim, openstreetmap, open-meteo, batch]
+
+  '
+name: geocoding-skill
 ---
 
 # geocoding-skill
