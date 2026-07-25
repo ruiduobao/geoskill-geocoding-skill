@@ -26,16 +26,16 @@ Forward and reverse geocoding tool using Nominatim (OpenStreetMap) and Open-Mete
 
 ```bash
 # Forward geocode
-python geocoding-skill.py geocode --address "Beijing, China"
+python scripts\geocoding-skill.py geocode --address "Beijing, China"
 
 # Reverse geocode
-python geocoding-skill.py reverse --lat 39.9042 --lon 116.4074
+python scripts\geocoding-skill.py reverse --lat 39.9042 --lon 116.4074
 
 # Batch geocode from CSV
-python geocoding-skill.py batch --input addresses.csv --address_col "address"
+python scripts\geocoding-skill.py batch --input addresses.csv --address_col "address"
 
 # Use Open-Meteo (faster, good for cities)
-python geocoding-skill.py geocode --address "Tokyo" --provider open-meteo
+python scripts\geocoding-skill.py geocode --address "Tokyo" --provider open-meteo
 ```
 
 ## Parameters
@@ -129,7 +129,7 @@ When multiple matches are found, all candidates are returned with confidence sco
 ## Timeout Configuration
 
 ```bash
-python geocoding-skill.py batch --input addresses.csv --timeout 60
+python scripts\geocoding-skill.py batch --input addresses.csv --timeout 60
 ```
 
 Default timeout is 30 seconds per request. Increase for slow connections.
@@ -138,7 +138,7 @@ Default timeout is 30 seconds per request. Increase for slow connections.
 
 ```bash
 # Resume from last successful row
-python geocoding-skill.py batch --input addresses.csv --resume --state-file .geocoding_state.json
+python scripts\geocoding-skill.py batch --input addresses.csv --resume --state-file .geocoding_state.json
 ```
 
 The state file tracks completed rows, allowing interruption and resumption without reprocessing.
@@ -148,7 +148,7 @@ The state file tracks completed rows, allowing interruption and resumption witho
 - Input CSV must be **UTF-8** encoded
 - For Nominatim, use `--language` parameter to specify preferred language:
   ```bash
-  python geocoding-skill.py geocode --address "北京市" --language zh
+  python scripts\geocoding-skill.py geocode --address "北京市" --language zh
   ```
 - Supported language codes: `en`, `zh`, `ja`, `ko`, `fr`, `de`, etc.
 
@@ -156,7 +156,7 @@ The state file tracks completed rows, allowing interruption and resumption witho
 
 ```bash
 # Use a self-hosted Nominatim instance
-python geocoding-skill.py geocode --address "Beijing" --endpoint https://nominatim.example.com/search
+python scripts\geocoding-skill.py geocode --address "Beijing" --endpoint https://nominatim.example.com/search
 ```
 
 Default endpoint: `https://nominatim.openstreetmap.org/search`
@@ -165,7 +165,7 @@ Default endpoint: `https://nominatim.openstreetmap.org/search`
 
 ```bash
 # Prioritize results in China
-python geocoding-skill.py geocode --address "Springfield" --countrycode us
+python scripts\geocoding-skill.py geocode --address "Springfield" --countrycode us
 ```
 
 Use `--countrycode` with ISO 3166-1 alpha-2 codes to bias results toward a specific country.
@@ -231,7 +231,7 @@ m.save("geocoded_map.html")
 
 ### Batch Geocoding with Resume
 ```bash
-python scripts/geocoding.py batch   --input addresses.csv --output geocoded.json --resume
+python scripts\geocoding-skill.py batch   --input addresses.csv --output geocoded.json --resume
 ```
 
 ### CI/CD Integration (GitHub Actions)
@@ -251,14 +251,14 @@ jobs:
           python-version: '3.11'
       - run: pip install requests
       - run: |
-          python scripts/geocoding.py batch \
+          python scripts\geocoding-skill.py batch \
             --input data/addresses.csv \
             --output data/geocoded.json --resume
 ```
 
 ### PostGIS Import
 ```bash
-python scripts/geocoding.py batch --input addresses.csv --output geocoded.json
+python scripts\geocoding-skill.py batch --input addresses.csv --output geocoded.json
 
 # Convert to CSV and import
 python -c "
@@ -342,7 +342,7 @@ id,lat,lon
 ## 超时配置
 
 ```bash
-python geocoding-skill.py batch --input addresses.csv --timeout 60
+python scripts\geocoding-skill.py batch --input addresses.csv --timeout 60
 ```
 
 默认超时 30 秒/请求。网络较慢时增加超时时间。
@@ -351,7 +351,7 @@ python geocoding-skill.py batch --input addresses.csv --timeout 60
 
 ```bash
 # 从上次成功行恢复
-python geocoding-skill.py batch --input addresses.csv --resume --state-file .geocoding_state.json
+python scripts\geocoding-skill.py batch --input addresses.csv --resume --state-file .geocoding_state.json
 ```
 
 状态文件跟踪已完成行，支持中断后恢复，无需重新处理。
@@ -361,7 +361,7 @@ python geocoding-skill.py batch --input addresses.csv --resume --state-file .geo
 - 输入 CSV 必须为 **UTF-8** 编码
 - Nominatim 使用 `--language` 参数指定首选语言：
   ```bash
-  python geocoding-skill.py geocode --address "北京市" --language zh
+  python scripts\geocoding-skill.py geocode --address "北京市" --language zh
   ```
 - 支持的语言代码：`en`、`zh`、`ja`、`ko`、`fr`、`de` 等
 
@@ -369,7 +369,7 @@ python geocoding-skill.py batch --input addresses.csv --resume --state-file .geo
 
 ```bash
 # 使用自托管 Nominatim 实例
-python geocoding-skill.py geocode --address "Beijing" --endpoint https://nominatim.example.com/search
+python scripts\geocoding-skill.py geocode --address "Beijing" --endpoint https://nominatim.example.com/search
 ```
 
 默认端点：`https://nominatim.openstreetmap.org/search`
@@ -378,7 +378,7 @@ python geocoding-skill.py geocode --address "Beijing" --endpoint https://nominat
 
 ```bash
 # 优先返回中国结果
-python geocoding-skill.py geocode --address "Springfield" --countrycode us
+python scripts\geocoding-skill.py geocode --address "Springfield" --countrycode us
 ```
 
 使用 ISO 3166-1 alpha-2 代码指定 `--countrycode` 以偏向特定国家。
@@ -453,16 +453,16 @@ m.save("geocoded_map.html")
 
 ```bash
 # 正向地理编码
-python geocoding-skill.py geocode --address "北京市天安门"
+python scripts\geocoding-skill.py geocode --address "北京市天安门"
 
 # 反向地理编码
-python geocoding-skill.py reverse --lat 39.9042 --lon 116.4074
+python scripts\geocoding-skill.py reverse --lat 39.9042 --lon 116.4074
 
 # 批量地理编码
-python geocoding-skill.py batch --input addresses.csv --address_col "address"
+python scripts\geocoding-skill.py batch --input addresses.csv --address_col "address"
 
 # 使用 Open-Meteo（更快，适合城市名）
-python geocoding-skill.py geocode --address "Tokyo" --provider open-meteo
+python scripts\geocoding-skill.py geocode --address "Tokyo" --provider open-meteo
 ```
 
 ## 数据来源
