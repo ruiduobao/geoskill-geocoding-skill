@@ -1,12 +1,6 @@
 ---
-description: 'Forward and reverse geocoding using Nominatim (OpenStreetMap) and Open-Meteo
-
-  Geocoding API. Supports address-to-coordinates, coordinates-to-address,
-
-  and batch geocoding from CSV files.
-
-  '
 name: geocoding-skill
+description: 'Forward and reverse geocoding using Nominatim (OpenStreetMap) and Open-Meteo description: 'Forward and reverse geocoding using Nominatim (OpenStreetMap) and Open-Meteo  Geocoding API. Supports address-to-coordinates, coordinates-to-address,  and batch geocoding from CSV files.  '
 ---
 
 # geocoding-skill
